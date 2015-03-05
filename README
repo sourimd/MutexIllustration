@@ -1,0 +1,12 @@
+The two .c files demonstrates the effect of using mutex. In the withoutLock.c case the threads
+will get executed in an interleaved fashion. When one thread is put to sleep the others will
+execute.
+
+But in the withLock.c case at time only one thread can execute. Even though one thread has been
+put to sleep the CPU won't allocate CPU time to other threads because the former hasn't quite
+stopped executing. Once one thread has completed full execution only then other thread will
+start executing, thereby achieving serialized execution.
+
+This behaviour has been achieved by using mutex lock. As long one thread has got a lock, no other
+thread will get executed. They will get their chance only when the lock is released by the currently 
+executing thread.
